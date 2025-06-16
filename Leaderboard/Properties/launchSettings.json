@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "LeaderboardService": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "https://localhost:7350;http://localhost:7351"
+    }
+  }
+}
