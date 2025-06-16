@@ -5,13 +5,6 @@ using System.Threading;
 
 namespace Leaderboard.Infrastructure;
 
-
-/// <summary>
-/// 跳表实现
-/// 跳表是一种随机化的数据结构，通过维护多层链表来实现O(log n)的查找效率
-/// 每一层都是下一层的子集，最底层包含所有元素
-/// </summary>
-/// <typeparam name="T">跳表存储的数据类型，必须实现IComparable接口</typeparam>
 public class ConcurrentSkipList<T> :ICollection<T> where T : IComparable<T>
 {
     public class SkipListNode<T>
@@ -43,29 +36,10 @@ public class ConcurrentSkipList<T> :ICollection<T> where T : IComparable<T>
     /// </summary>
     private readonly SkipListNode<T> _head;
 
-    /// <summary>
-    /// 随机数生成器，用于决定新节点的层数
-    /// </summary>
     private readonly Random _random;
-
-    /// <summary>
-    /// 当前跳表的最大层数
-    /// </summary>
     private int _maxLevel;
-
-    /// <summary>
-    /// 跳表中的元素数量
-    /// </summary>
     private int _count;
-
-    /// <summary>
-    /// 跳表的最大层数限制
-    /// </summary>
     private const int MaxLevel = 32;
-
-    /// <summary>
-    /// 用于决定是否增加层数的概率
-    /// </summary>
     private const double Probability = 0.5;
 
     /// <summary>
